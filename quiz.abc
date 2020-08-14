@@ -1,0 +1,154 @@
+@start
+	*say
+	Welcome to COVID Symptoms TEST! We will be asking you a series of True or False questions to see if you will be allowed to enter the building.
+        [shortPause]
+	*then
+	    set showId to 1
+	    set questionNum to 1
+	    set playerPoints to 0
+	    set opponentPoints to 0
+	    set previousPlayerPoints to 0
+	    flag ftue
+        <-> setupGame
+        -> covidIntro
+
+@covidIntro
+    *say
+		Please answer each question as honest as possible. Your life and many other lives could be affected if you do not answer the questions truthfully! You will be asked 5-10 questions. Lets Begin!
+		 [shortPause]
+	*then
+        -> setupQ
+
+@setupQ
+    *then
+        <-> setupQuestionData
+        -> introQ        
+
+@introQ
+    *say
+
+		 [shortPause]
+    *then
+			-> q 
+
+@q
+    *say
+ {question}
+		
+	*then
+		hear Yes {
+			-> answerWrong
+		}
+
+
+		hear No {
+			-> answerCorrect
+		}
+
+
+
+
+        slot answer to 'AnswerSlotType'
+        hear {answer}, the answer is {answer}, it's {answer}, I think it's {answer} {
+            -> answer
+        }
+
+        hear i don't know, skip, next, continue {
+            // Just jump past the right and wrong sounds and move to the next question
+            -> answerQ
+        }
+
+        hear repeat the question, repeat, what are the choices {
+			-> q 
+        }
+        
+        hear * {
+			-> q 
+        }
+
+        hear help {
+            -> help
+        }
+        
+@answer
+    *say
+     You answered {correctanswer}[shortPause]
+    *then
+    
+        if answer == correctAnswer {
+            -> answerCorrect
+        }
+        
+        -> answerWrong
+        
+@answerCorrect
+    *say
+       [shortPause]
+    *then
+        -> answerQ
+
+
+@answerWrong
+    *say
+       Your test is over. Unfortunately you will not be allowed to enter the building. [shortPause]Please make sure you remain in quarintine for the next 10-14 days. You have been prompted to leave the campus immediately [shortPause]
+    *then
+        >>END
+@answerQ
+    *say
+        
+    *then
+        -> setupNextQuestion
+
+@setupNextQuestion
+    *then
+        if questionNum == numQuestionsTotal {
+            -> quizOver
+        }
+        
+	    increase questionNum by 1
+        -> setupQ
+
+
+@quizOver
+    *say
+        [shortPause]  You have successfully completed the COVID Symptoms quiz. You may enter the building. Please make sure you are wearing your mask. 
+    *then
+    
+        >>END
+
+// SPECIAL SCENE: @resume is a special scene that will play when the player comes back to the game after leaving
+@resume
+	*say
+		Welcome back. Would you like to start where you left off?
+	*then
+		hear yes, ok {
+            // Tell the framework to pick up where they last left off
+			>> RESUME
+		}
+		hear no {
+			>> RESTART
+		}
+
+@pause
+	*say
+		Thanks for playing.
+	*then
+		>> PAUSE
+
+@end
+	*say
+		Thanks for playing.
+	*then
+		>> END
+
+@help
+    *say
+        This is a COVID Symptoms Quiz to see if you meet the requirements to enter the building.[shortPause] We want to make sure you and everyone around you stays safe from the coronavirus.[shortPause] For each of the Questions answer Yes[shortPause] or [shortPause] No'.
+    *then
+        >> BACK
+        
+@global prepend
+    *show
+        template: 'default'
+        background: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F698588-coronavirus-protection-poster-with-mask&psig=AOvVaw1wjBIxsKeo7SgULql8cXkK&ust=1597434158856000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPiOr5L4mOsCFQAAAAAdAAAAABAD'
+        
