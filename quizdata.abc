@@ -1,0 +1,132 @@
+@setupGame
+    *then
+   
+        set showIntro to 'Today you will be taking the COVID Sympton Quiz'
+        
+        >> RETURN
+
+@setupQuestionData
+    *then
+        set gainedPointsThisRound to 0
+        set answerPointsValue to 10
+        set numQuestionsTotal to 10
+        
+        if showId == 1 and questionNum == 1 {
+            set questionIntro to 'All right, here's the first question'
+            set question to 'Have you had a fever in the last 14-28 days?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+       if showId == 1 and questionNum == 2 {
+            set questionIntro to ''
+            set question to 'Have you been coughing recently?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+        
+         if showId == 1 and questionNum == 3 {
+            set questionIntro to ''
+            set question to 'Have you been experiencing headaches?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+                
+         if showId == 1 and questionNum == 4 {
+            set questionIntro to ''
+            set question to 'Have you recently experienced a sore throat?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+        
+            if showId == 1 and questionNum == 5 {
+            set questionIntro to ''
+            set question to 'Do you have congestion or a runny nose?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+        
+            if showId == 1 and questionNum == 6 {
+            set questionIntro to ''
+            set question to 'Do you have shortness of breath or difficulty breathing?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+                 if showId == 1 and questionNum == 6 {
+            set questionIntro to ''
+            set question to 'Have you been experiencing nausea or vomiting?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+        }
+            if showId == 1 and questionNum == 7{
+            set questionIntro to ''
+            set question to 'Have you recently been in contact with someone who has the coronavirus?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+            }
+            
+            if showId == 1 and questionNum == 8{
+            set questionIntro to ''
+            set question to 'Have you lost your sense of taste or smell?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+            }
+            
+            if showId == 1 and questionNum == 9{
+            set questionIntro to ''
+            set question to 'Are you experiencing fatigue or loss of appetite'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+            }
+            
+                if showId == 1 and questionNum == 10{
+            set questionIntro to 'The last questions is'
+            set question to 'Have you traveled out of the state in the last 10-14 days?'
+        
+            set correctAnswer to 'No'
+            set answerYes to 'Yes'
+            set answerNo to 'No'
+        
+            >> RETURN
+            }
+    
+    >> RETURN   
